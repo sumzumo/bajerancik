@@ -1,18 +1,208 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>The Bjorgen Main Content</title>
-</head>
+<html>
+    <head>
+        <title>randka</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+        <style>
+            .popup {
+                display: none;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                padding: 20px;
+                background-color: white;
+                color: black;
+                border: 2px solid #000;
+                z-index: 2; /* Ensures the popup is above other content */
+            }
+            body {
+                font-family: 'Roboto', sans-serif; /* More readable font */
+                background-color: #dd99ff;
+                color: white;
+                text-align: center;
+                padding: 10%;
+                margin: 0;
+            }
+            h1 {
+                font-size: 24px; /* Larger font size for headers */
+            }
+            .button {
+                width: auto; /* Make width responsive */
+                padding: 15px;
+                margin: 10px;
+                font-size: 18px; /* Larger font size for readability */
+                cursor: pointer;
+                border: none;
+                transition: background-color 0.3s;
+            }
+            .no, .yes {
+                display: inline-block;
+                min-width: 120px; /* Minimum width for touch targets */
+                background-color: #ff0000;
+            }
+            .yes {
+                background-color: #00ff00;
+            }
+            .no:hover, .yes:hover {
+                opacity: 0.8;
+            }
+            img {
+                position: fixed;
+                bottom: 0%;
+                left: 0%;
+                width: 10%; /* Adjusted size */
+                height: auto;
+            }
+            .top-right {
+                position: fixed;
+                top: 10%;
+                left: 90%;
+                width: 10%; /* Adjust width as necessary */
+                height: auto; /* Maintain aspect ratio */
+            }
+            .noway {
+                position: fixed;
+                top: 3%;
+                left: 63%;
+                width: 10%; /* Adjust width as necessary */
+                height: auto; /* Maintain aspect ratio */
+            }
+            .shy {
+                position: fixed;
+                top: 2%;
+                left: 33%;
+                width: 10%; /* Adjust width as necessary */
+                height: auto; /* Maintain aspect ratio */
+            }
+            .hacker {
+                position: fixed;
+                top: 72%;
+                left: 7%;
+                width: 40%; /* Adjust width as necessary */
+                height: auto; /* Maintain aspect ratio */
+            }
+            .us {
+                position: fixed;
+                top: 80%;
+                left: 55%;
+                width: 40%; /* Adjust width as necessary */
+                height: auto; /* Maintain aspect ratio */
+            }
+            .hamster {
+                position: fixed;
+                top: 3%;
+                left: 3%;
+                width: 10%; /* Adjust width as necessary */
+                height: auto; /* Maintain aspect ratio */
+            }
+        </style>
+    </head>
 <body>
-    <script type="text/javascript">
-        // Fetch the content of /main and display it
-        fetch('main/index.html')
-            .then(response => response.text())
-            .then(html => {
-                document.body.innerHTML = html;
-            })
-            .catch(err => console.error('Failed to load page content:', err));
+    <h1>witam, dasz sie wyciagnac na randke???? (prosze) </h1>
+    <button class="button no" id="noButton">nie..</button>
+    <button class="button yes" id="yesButton">ok ok</button>
+
+    <div id="noPopup" class="popup">
+        <img src="nopopup.png" alt="Descriptive Alt Text" style="width:40%; height:auto; top: 110%; left: 40%;">
+        <p>reconsider my proposition plis :/</p>
+        <button onclick="closePopup('noPopup')">cofnij decyzje</button>
+    </div>
+    
+    <div id="yesPopup" class="popup">
+        <img src="pog-emotikonka.png" alt="Descriptive Alt Text" style="width:40%; height:auto; top: 110%; left: 40%;">
+        <p>spacerek zapoznawczy, data do ustalenia </p>
+        <button onclick="closePopup('yesPopup')">zgoda ;pp</button>
+    </div>
+
+    <img src="xdd.png" alt="on ma miec biale tlo jak cos">
+    <img src="serduszko.png" class="top-right" alt="Descriptive text about the second image">
+    <img src="NOWAY.png" class="noway" alt="Descriptive text about the second image">
+    <img src="shy.png" class="shy" alt="Descriptive text about the second image">
+    <img src="stock-photo-programmer-on-a-computer-219655585.jpg" class="hacker" alt="Descriptive text about the second image">
+    <img src="us.png" class="us" alt="Descriptive text about the second image">
+    <img src="hamste.png" class="hamster" alt="Descriptive text about the second image">
+    <audio id="yay" loop>
+        <source src="pedro-song.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sad" loop>
+        <source src="sad.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var yesButton = document.getElementById('yesButton');
+    var noButton = document.getElementById('noButton');
+    
+    if (yesButton && noButton) {
+        yesButton.addEventListener('click', function() {
+            openPopup('yesPopup');
+            stopAllAudiosExcept('yay');
+            playOrStopAudio('yay', 'play');
+        });
+
+        noButton.addEventListener('click', function() {
+            openPopup('noPopup');
+            stopAllAudiosExcept('sad');
+            playOrStopAudio('sad', 'play');
+        });
+    }
+});
+
+function playOrStopAudio(audioId, action) {
+    var audio = document.getElementById(audioId);
+    if (action === 'play') {
+        if (audio.paused) {
+            audio.volume = 0.1; // Set volume to 50% when starting to play
+            audio.play();
+        } else {
+            audio.currentTime = 0; // Resets the audio to start from the beginning
+            audio.volume = 0.1; // Ensure volume is adjusted even if already playing
+        }
+    } else if (action === 'stop') {
+        audio.pause();
+        audio.currentTime = 0; // Reset the audio to the start
+    }
+}
+
+function openPopup(popupId) {
+    var popups = document.querySelectorAll('.popup');
+    popups.forEach(function(popup) {
+        if (popup.id !== popupId) {
+            popup.style.display = 'none'; // Hide other popups
+        }
+    });
+    document.getElementById(popupId).style.display = 'block';
+}
+function stopAllAudiosExcept(audioId) {
+    document.querySelectorAll('audio').forEach(function(audio) {
+        if (audio.id !== audioId) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    });
+}
+function stopAllAudios() {
+    document.querySelectorAll('audio').forEach(function(audio) {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+}
+function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+    stopAllAudios(); // Stop all audios when any popup is closed
+}
+
+function playAudio(audioId) {
+    var audio = document.getElementById(audioId);
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.currentTime = 0; // Reset the audio and play from the beginning
+    }
+}
     </script>
 </body>
 </html>

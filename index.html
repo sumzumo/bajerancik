@@ -1,120 +1,159 @@
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>randka</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-        <style>
-            .popup {
-                display: none;
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                padding: 20px;
-                background-color: white;
-                color: black;
-                border: 2px solid #000;
-                z-index: 2; /* Ensures the popup is above other content */
-            }
-            body {
-                font-family: 'Roboto', sans-serif; /* More readable font */
-                background-color: #dd99ff;
-                color: white;
-                text-align: center;
-                padding: 10%;
-                margin: 0;
-            }
-            h1 {
-                font-size: 24px; /* Larger font size for headers */
-            }
-            .button {
-                width: auto; /* Make width responsive */
-                padding: 15px;
-                margin: 10px;
-                font-size: 18px; /* Larger font size for readability */
-                cursor: pointer;
-                border: none;
-                transition: background-color 0.3s;
-            }
-            .no, .yes {
-                display: inline-block;
-                min-width: 120px; /* Minimum width for touch targets */
-                background-color: #ff0000;
-            }
-            .yes {
-                background-color: #00ff00;
-            }
-            .no:hover, .yes:hover {
-                opacity: 0.8;
-            }
-            img {
-                position: fixed;
-                bottom: 0%;
-                left: 0%;
-                width: 10%; /* Adjusted size */
-                height: auto;
-            }
-            .top-right {
-                position: fixed;
-                top: 10%;
-                left: 90%;
-                width: 10%; /* Adjust width as necessary */
-                height: auto; /* Maintain aspect ratio */
-            }
-            .noway {
-                position: fixed;
-                top: 3%;
-                left: 63%;
-                width: 10%; /* Adjust width as necessary */
-                height: auto; /* Maintain aspect ratio */
-            }
-            .shy {
-                position: fixed;
-                top: 2%;
-                left: 33%;
-                width: 10%; /* Adjust width as necessary */
-                height: auto; /* Maintain aspect ratio */
-            }
-            .hacker {
-                position: fixed;
-                top: 72%;
-                left: 7%;
-                width: 40%; /* Adjust width as necessary */
-                height: auto; /* Maintain aspect ratio */
-            }
-            .us {
-                position: fixed;
-                top: 80%;
-                left: 55%;
-                width: 40%; /* Adjust width as necessary */
-                height: auto; /* Maintain aspect ratio */
-            }
-            .hamster {
-                position: fixed;
-                top: 3%;
-                left: 3%;
-                width: 10%; /* Adjust width as necessary */
-                height: auto; /* Maintain aspect ratio */
-            }
-        </style>
-    </head>
+<head>
+    <title>randka</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            color: black;
+            border: 2px solid #000;
+            z-index: 2;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #dd99ff;
+            color: white;
+            text-align: center;
+            padding: 10%;
+            margin: 0;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .button {
+            width: auto;
+            padding: 15px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .no, .yes {
+            display: inline-block;
+            min-width: 120px;
+            background-color: #ff0000;
+        }
+        .yes {
+            background-color: #00ff00;
+        }
+        .no:hover, .yes:hover {
+            opacity: 0.8;
+        }
+        img {
+            position: fixed;
+            bottom: 0%;
+            left: 0%;
+            width: 10%;
+            height: auto;
+        }
+        .top-right {
+            position: fixed;
+            top: 10%;
+            left: 90%;
+            width: 10%;
+            height: auto;
+        }
+        .noway {
+            position: fixed;
+            top: 3%;
+            left: 63%;
+            width: 10%;
+            height: auto;
+        }
+        .shy {
+            position: fixed;
+            top: 2%;
+            left: 33%;
+            width: 10%;
+            height: auto;
+        }
+        .hacker {
+            position: fixed;
+            top: 72%;
+            left: 7%;
+            width: 40%;
+            height: auto;
+        }
+        .us {
+            position: fixed;
+            top: 80%;
+            left: 55%;
+            width: 40%;
+            height: auto;
+        }
+        .hamster {
+            position: fixed;
+            top: 3%;
+            left: 3%;
+            width: 10%;
+            height: auto;
+        }
+        .offer {
+            position: fixed;
+            top: 5%;
+            left: 45%;
+            width: 10%;
+            height: auto;
+        }
+        .container {
+            display: flex;
+            justify-content: 9;
+            align-items: 9;
+            margin: 1;
+        }
+        .text-box {
+            width: 45%;
+        }
+        .left {
+            text-align: left;
+            margin-left: 1; /* Adjust this margin to move text further left or right */
+        }
+        .right {
+            text-align: right;
+            margin-right: 1; /* Adjust this margin to move text further left or right */
+        }
+    </style>
+</head>
 <body>
-    <h1>witam, ja w sprawie tego spaceru, to co dalej chętna?1!!(prosze) </h1>
-    <button class="button no" id="noButton">nie..</button>
-    <button class="button yes" id="yesButton">ok ok</button>
+    <h1>...</h1>
+    <div class="container">
+        <div class="container">
+            <div class="text-box left">
+                YOU GET:.<br>
+                - goofy ass content supporter<br>
+                - daily dose of tiktoks<br>
+                - someone to play games with and talk to
+            </div>
+            <div class="text-box right">
+                I GET:<br>
+                - cure to loneliness<br>
+                - person that i can spam weird things to<br>
+                - what the fk do i even get lol
+            </div>
+        </div>
+    </div>
+    <button class="button no" id="noButton">nie lol</button>
+    <button class="button yes" id="yesButton">ok ok git</button>
 
     <div id="noPopup" class="popup">
         <img src="nopopup.png" alt="Descriptive Alt Text" style="width:40%; height:auto; top: 110%; left: 40%;">
-        <p>reconsider my proposition plis :/</p>
+        <p>reconsider my proposition plis ://</p>
         <button onclick="closePopup('noPopup')">cofnij decyzje</button>
     </div>
     
     <div id="yesPopup" class="popup">
         <img src="pog-emotikonka.png" alt="Descriptive Alt Text" style="width:40%; height:auto; top: 110%; left: 40%;">
-        <p>gimme ur napięty schedule and we're good to go </p>
+        <p>oczekuje na jakas turbo dziwną wiadomość, ktora znaczy ze przeczytałas to gówno XDDD </p>
         <button onclick="closePopup('yesPopup')">zgoda ;pp</button>
     </div>
 
@@ -125,8 +164,9 @@
     <img src="stock-photo-programmer-on-a-computer-219655585.jpg" class="hacker" alt="Descriptive text about the second image">
     <img src="us.png" class="us" alt="Descriptive text about the second image">
     <img src="hamste.png" class="hamster" alt="Descriptive text about the second image">
+    <img src="trade-offer.png" class="offer" alt="Descriptive text about the second image">
     <audio id="yay" loop>
-        <source src="pedro-song.mp3" type="audio/mpeg">
+        <source src="yeah-boymp4.mp3" type="audio/mpeg">
     </audio>
     <audio id="sad" loop>
         <source src="sad.mp3" type="audio/mpeg">
@@ -155,7 +195,7 @@ function playOrStopAudio(audioId, action) {
     var audio = document.getElementById(audioId);
     if (action === 'play') {
         if (audio.paused) {
-            audio.volume = 0.1; // Set volume to 50% when starting to play
+            audio.volume = 0.1; // Set volume to 10% when starting to play
             audio.play();
         } else {
             audio.currentTime = 0; // Resets the audio to start from the beginning
